@@ -1,0 +1,686 @@
+/* ══════════════════════════════════════════════
+   modals.css — Overlays y cajas de diálogo
+   Rediseño: moderno, legible, premium
+   ══════════════════════════════════════════════ */
+
+/* ── Overlay base ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.52);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px) saturate(0.85);
+  animation: overlayIn 0.22s ease forwards;
+}
+
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-overlay.hiding {
+  animation: overlayOut 0.2s ease forwards;
+}
+
+@keyframes overlayOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+/* ── Caja modal base ── */
+.modal-box {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(200, 40, 0, 0.32) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(120, 15, 0, 0.32) 0%, transparent 60%),
+    repeating-linear-gradient(45deg,
+      transparent 0px, transparent 8px,
+      rgba(255, 255, 255, 0.012) 8px, rgba(255, 255, 255, 0.012) 9px),
+    #5c0a00;
+  border: 1px solid rgba(196, 154, 16, 0.45);
+  border-radius: 20px;
+  padding: clamp(28px, 4.5vh, 46px) clamp(28px, 4vw, 44px);
+  max-width: min(480px, 88vw);
+  width: 90%;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 0 60px rgba(196, 154, 16, 0.1);
+  text-align: center;
+  animation: modalIn 0.28s cubic-bezier(0.34, 1.3, 0.64, 1) forwards;
+  overflow: hidden;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-box.hiding {
+  animation: modalOut 0.2s ease forwards;
+}
+
+@keyframes modalOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.93) translateY(10px);
+  }
+}
+
+/* Línea decorativa superior */
+.modal-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 197, 24, 0.7), transparent);
+}
+
+.modal-box.wide {
+  max-width: min(660px, 92vw);
+}
+
+.modal-box.extra-wide {
+  max-width: min(920px, 95vw);
+}
+
+/* ── Títulos ── */
+.modal-title {
+  font-family: var(--font-title);
+  font-size: clamp(18px, 3vw, 24px);
+  color: var(--gold);
+  margin-bottom: clamp(4px, 0.8vh, 8px);
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 12px rgba(245, 197, 24, 0.25);
+}
+
+.modal-sub {
+  color: rgba(212, 168, 85, 0.75);
+  font-size: clamp(12px, 1.4vw, 13px);
+  margin-bottom: clamp(18px, 3vh, 28px);
+  line-height: 1.5;
+}
+
+/* ── Input ── */
+.modal-input {
+  width: 100%;
+  padding: clamp(11px, 1.6vh, 15px) clamp(14px, 2.2vw, 20px);
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.8vw, 17px);
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(196, 154, 16, 0.25);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  margin-bottom: clamp(14px, 2.5vh, 22px);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.modal-input:focus {
+  border-color: var(--gold);
+  background: rgba(245, 197, 24, 0.06);
+  box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.12);
+}
+
+/* ── Acciones ── */
+.modal-actions {
+  display: flex;
+  gap: clamp(8px, 1.5vw, 12px);
+  justify-content: center;
+  margin-top: clamp(14px, 2.5vh, 22px);
+}
+
+/* ══════════════════════════════════════════════
+   SELECTOR DE RECURSO
+   ══════════════════════════════════════════════ */
+.resource-selector {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(6px, 1vw, 10px);
+}
+
+.res-selector-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(4px, 0.6vh, 6px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: clamp(8px, 1.2vh, 12px) 4px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.res-selector-item:focus-within {
+  border-color: rgba(245, 197, 24, 0.4);
+  background: rgba(245, 197, 24, 0.05);
+}
+
+.res-selector-item label {
+  font-size: clamp(9px, 1.05vw, 11px);
+  color: rgba(212, 168, 85, 0.7);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.res-selector-item input[type="number"] {
+  width: 100%;
+  padding: clamp(4px, 0.6vh, 7px) 2px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.6vw, 16px);
+  font-weight: 700;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.res-selector-item input[type="number"]:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+
+.res-selector-item .res-icon-big {
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* ── Botones de elección de recurso ── */
+.resource-choice {
+  display: flex;
+  gap: clamp(8px, 1.5vw, 14px);
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: clamp(8px, 1.2vh, 14px) 0;
+}
+
+/* ══════════════════════════════════════════════
+   MODAL GANADOR — sin tarjeta, solo el overlay
+   difuminado de fondo enmarca el contenido
+   ══════════════════════════════════════════════ */
+.winner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 2.5vh, 22px);
+  text-align: center;
+  padding: clamp(20px, 4vh, 36px);
+}
+
+.winner-crown {
+  font-size: clamp(64px, 10vw, 96px);
+  animation: crownSpin 3s linear infinite;
+  filter: drop-shadow(0 4px 20px rgba(245, 197, 24, 0.6));
+}
+
+.winner-title {
+  font-family: var(--font-title);
+  font-size: clamp(36px, 7vw, 56px);
+  font-weight: 900;
+  background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.1em;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
+}
+
+.winner-subtitle {
+  font-family: var(--font-title);
+  font-size: clamp(36px, 7vw, 56px);
+  font-weight: 900;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* ══════════════════════════════════════════════
+   CARTAS DE DESARROLLO — Modal listado
+   ══════════════════════════════════════════════ */
+.devcard-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.5vw, 14px);
+  justify-content: center;
+  padding: clamp(10px, 1.8vh, 16px) 0;
+}
+
+.devcard-item {
+  width: clamp(94px, 12vw, 118px);
+  background: linear-gradient(160deg, #2a1010 0%, #160606 100%);
+  border: 1px solid rgba(196, 154, 16, 0.3);
+  border-radius: 12px;
+  padding: clamp(12px, 2vh, 18px) clamp(8px, 1.2vw, 12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(6px, 1vh, 9px);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.3, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.devcard-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 197, 24, 0.4), transparent);
+}
+
+.devcard-item:hover:not(.disabled) {
+  transform: translateY(-6px) scale(1.03);
+  border-color: var(--gold);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(245, 197, 24, 0.15);
+}
+
+.devcard-item.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  filter: grayscale(0.4);
+}
+
+.devcard-item .card-icon {
+  font-size: clamp(28px, 3.4vw, 36px);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+.devcard-item .card-name {
+  font-size: clamp(10px, 1.2vw, 12px);
+  color: var(--gold);
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.devcard-item .card-desc {
+  font-size: clamp(8px, 0.95vw, 10px);
+  color: rgba(212, 168, 85, 0.65);
+  text-align: center;
+  line-height: 1.45;
+}
+
+/* ── Modal usar carta (desde panel) ── */
+.devcard-use-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 2.2vh, 20px);
+}
+
+.devcard-use-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 1.8vh, 16px);
+  background: linear-gradient(180deg, #e8dfc8, #d8cbaa);
+  border: clamp(2px, 0.35vw, 3px) solid #6b1f1a;
+  border-radius: clamp(14px, 2vw, 18px);
+  padding: clamp(24px, 4.5vh, 36px) clamp(18px, 3vw, 26px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+  width: clamp(150px, 17vw, 200px);
+  aspect-ratio: 5 / 7.5;
+}
+
+.devcard-use-card::before {
+  content: '';
+  position: absolute;
+  inset: clamp(6px, 1vw, 9px);
+  border: 1px solid rgba(107, 31, 26, 0.35);
+  border-radius: clamp(9px, 1.4vw, 13px);
+  pointer-events: none;
+}
+
+.devcard-use-icon {
+  font-size: clamp(48px, 6.5vw, 66px);
+  line-height: 1;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+}
+
+.devcard-use-name {
+  font-family: var(--font-title);
+  font-size: clamp(14px, 1.7vw, 17px);
+  color: #6b1f1a;
+  text-align: center;
+  letter-spacing: 0.04em;
+  padding: 0 clamp(4px, 0.8vw, 8px);
+}
+
+.devcard-use-desc {
+  font-size: clamp(11px, 1.25vw, 13px);
+  color: #5a3c1a;
+  text-align: center;
+  max-width: clamp(140px, 16vw, 180px);
+  line-height: 1.5;
+}
+
+.devcard-use-warning {
+  color: #ff8a80;
+  font-size: clamp(12px, 1.3vw, 14px);
+  text-align: center;
+  font-weight: 600;
+  max-width: clamp(220px, 26vw, 280px);
+}
+
+.devcard-use-warning.hidden {
+  display: none;
+}
+
+.devcard-use-actions {
+  display: flex;
+  gap: clamp(10px, 1.8vw, 16px);
+}
+
+#btn-devcard-use-confirm:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+
+/* ══════════════════════════════════════════════
+   GUÍA DE PRECIOS — panel lateral derecho, siempre
+   visible. El botón y el cuerpo comparten el mismo
+   fondo transparente, integrados como una sola pieza;
+   al abrir, ocupa todo el espacio disponible como el chat.
+   ══════════════════════════════════════════════ */
+.price-guide-panel.side-panel {
+  position: fixed;
+  right: clamp(4px, 0.4vw, 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(280px, 24vw, 420px);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.price-guide-toggle {
+  padding: clamp(8px, 1vh, 14px) clamp(14px, 1.5vw, 22px);
+  background: rgba(255, 255, 255, 0.08);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.2);
+  border-radius: clamp(8px, 1vw, 10px);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.3vw, 18px);
+  font-weight: 600;
+  color: var(--cream);
+  text-align: center;
+  transition: background 0.15s, border-radius 0.15s;
+  user-select: none;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.price-guide-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.price-guide-panel.open .price-guide-toggle {
+  border-radius: clamp(8px, 1vw, 10px) clamp(8px, 1vw, 10px) 0 0;
+  border-bottom-color: transparent;
+}
+
+.price-guide-body {
+  flex: 0 0 auto;
+  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  border: 0 solid rgba(255, 255, 255, 0.2);
+  border-radius: 0 0 clamp(8px, 1vw, 10px) clamp(8px, 1vw, 10px);
+  transition: max-height 0.2s ease;
+}
+
+.price-guide-panel.open .price-guide-body {
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+  border-width: 0 clamp(1px, 0.2vw, 2px) clamp(1px, 0.2vw, 2px) clamp(1px, 0.2vw, 2px);
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.price-guide-panel.open .price-guide-body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Edge, Safari */
+}
+
+.price-guide-panel .price-guide-grid {
+  padding: clamp(12px, 1.8vh, 16px);
+  margin: 0;
+  grid-template-columns: 1fr;
+}
+
+/* ══════════════════════════════════════════════
+   MODAL GUÍA DE PRECIOS
+   ══════════════════════════════════════════════ */
+.price-guide-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(9px, 1.4vw, 14px);
+  text-align: left;
+  margin: clamp(12px, 2vh, 20px) 0;
+}
+
+.price-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(196, 154, 16, 0.2);
+  border-radius: 12px;
+  padding: clamp(12px, 1.8vh, 18px) clamp(12px, 1.6vw, 16px);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.price-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196, 154, 16, 0.3), transparent);
+}
+
+.price-card:hover {
+  background: rgba(196, 154, 16, 0.06);
+  border-color: rgba(196, 154, 16, 0.35);
+}
+
+.price-card-header {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.9vw, 9px);
+  margin-bottom: clamp(8px, 1.2vh, 12px);
+}
+
+.price-card-icon {
+  font-size: clamp(22px, 2.6vw, 28px);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+.price-card-name {
+  font-size: clamp(12px, 1.4vw, 14px);
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.price-card-resources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(4px, 0.6vw, 7px);
+}
+
+.price-res-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: clamp(11px, 1.2vw, 13px);
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+
+.price-res-chip.available {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--cream);
+}
+
+.price-res-chip.unavailable {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.35);
+  opacity: 0.6;
+}
+
+.price-res-chip .chip-icon {
+  font-size: clamp(13px, 1.4vw, 15px);
+}
+
+.price-res-chip .chip-qty {
+  font-weight: 700;
+  color: var(--gold-light);
+}
+
+.price-res-chip.unavailable .chip-qty {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ══════════════════════════════════════════════
+   MODAL CANJEAR — Construir / Comprar
+   ══════════════════════════════════════════════ */
+.exchange-flat-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.6vw, 16px);
+  margin: clamp(12px, 2.2vh, 20px) 0;
+}
+
+.exchange-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(8px, 1.3vh, 12px);
+  padding: clamp(16px, 2.6vh, 22px) clamp(10px, 1.6vw, 16px);
+  background: rgba(255, 255, 255, 0.03);
+  border: clamp(1px, 0.18vw, 2px) solid rgba(255, 255, 255, 0.1);
+  border-radius: clamp(12px, 1.6vw, 16px);
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.exchange-item.affordable {
+  border-color: rgba(245, 197, 24, 0.35);
+  background: rgba(245, 197, 24, 0.05);
+}
+
+.exchange-item.affordable:hover {
+  border-color: var(--gold);
+  background: rgba(245, 197, 24, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.exchange-item-icon {
+  font-size: clamp(30px, 4vw, 40px);
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.4));
+  line-height: 1;
+}
+
+.exchange-item-name {
+  font-family: var(--font-title);
+  font-size: clamp(13px, 1.5vw, 16px);
+  color: var(--cream);
+  letter-spacing: 0.02em;
+}
+
+.exchange-cost {
+  display: flex;
+  gap: clamp(4px, 0.6vw, 6px);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.exchange-cost-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: clamp(6px, 0.8vw, 8px);
+  padding: clamp(3px, 0.5vh, 4px) clamp(6px, 0.9vw, 8px);
+  font-size: clamp(11px, 1.2vw, 13px);
+}
+
+.exchange-cost-chip.missing {
+  border-color: rgba(229, 57, 53, 0.4);
+  background: rgba(229, 57, 53, 0.08);
+}
+
+.exchange-cost-chip.missing .chip-qty {
+  color: #ff8a80;
+}
+
+.exchange-cost-chip .chip-icon {
+  font-size: clamp(12px, 1.3vw, 14px);
+}
+
+.exchange-cost-chip .chip-qty {
+  font-weight: 700;
+  color: var(--cream);
+  font-size: clamp(11px, 1.2vw, 13px);
+}
+
+.exchange-item .btn-exchange {
+  width: 100%;
+  margin-top: clamp(2px, 0.4vh, 4px);
+}

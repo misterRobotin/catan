@@ -1,0 +1,471 @@
+/* ══════════════════════════════════════════════
+   trade.css — Modal de negociación/comercio
+   Rediseño: moderno, legible, premium
+   ══════════════════════════════════════════════ */
+
+/* ── Estructura principal ── */
+.trade-sections {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vh, 18px);
+  text-align: left;
+}
+
+/* ── Etiqueta de sección ── */
+.trade-section-label {
+  font-size: clamp(10px, 1.15vw, 12px);
+  color: rgba(212, 168, 85, 0.65);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: clamp(6px, 0.9vh, 9px);
+  font-weight: 600;
+}
+
+.trade-section h3 {
+  font-size: clamp(10px, 1.15vw, 12px);
+  color: rgba(212, 168, 85, 0.65);
+  margin-bottom: clamp(6px, 0.9vh, 9px);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+/* ── Botones de tipo (Con jugador / Con banco) ── */
+.trade-type-btns {
+  display: flex;
+  gap: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(196, 154, 16, 0.2);
+  border-radius: 10px;
+  padding: 3px;
+  overflow: hidden;
+}
+
+.btn-trade-type {
+  flex: 1;
+  padding: clamp(7px, 1.1vh, 10px) clamp(10px, 1.4vw, 16px);
+  font-family: var(--font-body);
+  font-size: clamp(12px, 1.3vw, 13px);
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  color: rgba(212, 168, 85, 0.6);
+  transition: all 0.18s ease;
+  letter-spacing: 0.04em;
+}
+
+.btn-trade-type.active {
+  background: linear-gradient(135deg, rgba(245, 197, 24, 0.18) 0%, rgba(196, 154, 16, 0.12) 100%);
+  color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(196, 154, 16, 0.35) inset;
+}
+
+.btn-trade-type:not(.active):hover {
+  color: rgba(212, 168, 85, 0.9);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Jugadores objetivo ── */
+.trade-target-chips {
+  display: flex;
+  gap: clamp(6px, 1vw, 10px);
+  flex-wrap: wrap;
+}
+
+.trade-target-chip {
+  display: flex;
+  align-items: center;
+  padding: clamp(7px, 1vh, 10px) clamp(14px, 2vw, 20px);
+  border-radius: clamp(18px, 2.4vw, 24px);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: clamp(12px, 1.3vw, 14px);
+  font-weight: 700;
+  transition: all 0.15s;
+  color: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.04);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.trade-target-chip.all.selected {
+  color: #3a1800;
+  border-color: var(--gold);
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  box-shadow: 0 0 12px rgba(245, 197, 24, 0.4);
+  text-shadow: none;
+}
+
+.trade-target-chip:not(.all).selected {
+  color: white;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+.trade-target-chip:hover:not(.selected) {
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Separador visual entre ofrezco/pido ── */
+.trade-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(245, 197, 24, 0.5);
+  font-size: clamp(18px, 2.4vw, 24px);
+  justify-content: center;
+  margin: clamp(-4px, -0.5vh, -2px) 0;
+}
+
+/* ── Oferta recibida ── */
+.trade-received-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(12px, 2vw, 20px);
+  padding: clamp(14px, 2.2vh, 22px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(196, 154, 16, 0.18);
+  border-radius: 12px;
+  margin: clamp(8px, 1.4vh, 14px) 0;
+  flex-wrap: wrap;
+}
+
+.trade-received-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(6px, 1vh, 10px);
+}
+
+.trade-received-label {
+  font-size: clamp(10px, 1.1vw, 12px);
+  color: rgba(212, 168, 85, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.trade-received-cards {
+  display: flex;
+  gap: clamp(5px, 0.8vw, 8px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trade-received-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2px, 0.4vh, 4px);
+  padding: clamp(7px, 1.1vh, 10px) clamp(9px, 1.3vw, 13px);
+  border-radius: clamp(7px, 0.9vw, 9px);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.2);
+  min-width: clamp(38px, 4.2vw, 50px);
+}
+
+.trade-received-card.lumber {
+  background: linear-gradient(180deg, #5d4037, #3e2723);
+  border-color: #8d6e63;
+}
+
+.trade-received-card.brick {
+  background: linear-gradient(180deg, #e64a19, #bf360c);
+  border-color: #ff7043;
+}
+
+.trade-received-card.wool {
+  background: linear-gradient(180deg, #7cb342, #558b2f);
+  border-color: #aed581;
+}
+
+.trade-received-card.grain {
+  background: linear-gradient(180deg, #f9a825, #f57f17);
+  border-color: #ffcc02;
+}
+
+.trade-received-card.ore {
+  background: linear-gradient(180deg, #78909c, #546e7a);
+  border-color: #b0bec5;
+}
+
+.trade-received-card .res-icon {
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1;
+}
+
+.trade-received-card .res-count {
+  font-size: clamp(15px, 1.8vw, 20px);
+  font-weight: 800;
+  color: white;
+  line-height: 1;
+}
+
+.trade-received-card.insufficient {
+  opacity: 0.5;
+  border-color: #e53935 !important;
+  box-shadow: 0 0 0 1px #e53935 inset;
+}
+
+.trade-received-empty {
+  font-size: clamp(12px, 1.3vw, 14px);
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+}
+
+.trade-arrow {
+  font-size: clamp(22px, 2.8vw, 28px);
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+.trade-received-warning {
+  color: #ff8a80;
+  font-size: clamp(12px, 1.3vw, 14px);
+  text-align: center;
+  margin-top: clamp(4px, 0.8vh, 8px);
+  font-weight: 600;
+}
+
+.trade-received-warning.hidden {
+  display: none;
+}
+
+/* ── Contenedor de sección con fondo sutil ── */
+.trade-section {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 11px;
+  padding: clamp(10px, 1.6vh, 15px) clamp(12px, 1.8vw, 16px);
+}
+
+/* ── Columnas Ofrezco / Pido (ahora apiladas, no lado a lado) ── */
+.trade-column {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 11px;
+  padding: clamp(10px, 1.6vh, 15px) clamp(10px, 1.5vw, 14px);
+}
+
+.trade-column h3 {
+  font-size: clamp(10px, 1.15vw, 12px);
+  color: rgba(212, 168, 85, 0.65);
+  margin-bottom: clamp(8px, 1.2vh, 12px);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.trade-swap-icon {
+  text-align: center;
+  font-size: clamp(18px, 2.2vw, 22px);
+  color: var(--gold);
+  opacity: 0.7;
+  margin: clamp(-4px, -0.6vh, -2px) 0;
+}
+
+
+/* ── Selector de recursos tipo stepper ── */
+.res-stepper-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(6px, 1vw, 10px);
+}
+
+.discard-counter {
+  text-align: center;
+  font-size: clamp(12px, 1.4vw, 14px);
+  color: rgba(212, 168, 85, 0.75);
+  font-weight: 600;
+  margin: clamp(10px, 1.6vh, 14px) 0;
+}
+
+.discard-counter.complete {
+  color: var(--gold);
+}
+
+/* ── Selector de víctima del ladrón, relleno con color real ── */
+.steal-target-filled {
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.steal-target-filled:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+.res-stepper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(5px, 0.8vh, 8px);
+  padding: clamp(8px, 1.3vh, 12px) clamp(4px, 0.8vw, 6px);
+  border-radius: clamp(9px, 1.2vw, 12px);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.18);
+  transition: all 0.15s;
+}
+
+.res-stepper.lumber {
+  background: linear-gradient(180deg, #5d4037, #3e2723);
+  border-color: #8d6e63;
+}
+
+.res-stepper.brick {
+  background: linear-gradient(180deg, #e64a19, #bf360c);
+  border-color: #ff7043;
+}
+
+.res-stepper.wool {
+  background: linear-gradient(180deg, #7cb342, #558b2f);
+  border-color: #aed581;
+}
+
+.res-stepper.grain {
+  background: linear-gradient(180deg, #f9a825, #f57f17);
+  border-color: #ffcc02;
+}
+
+.res-stepper.ore {
+  background: linear-gradient(180deg, #78909c, #546e7a);
+  border-color: #b0bec5;
+}
+
+.res-stepper.zero {
+  opacity: 0.55;
+}
+
+#trade-player-columns.hidden,
+#trade-bank-columns.hidden {
+  display: none;
+}
+
+/* ── Selector de comercio con el banco: un icono por bloque ── */
+.bank-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(6px, 1vw, 10px);
+}
+
+.bank-choice-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(4px, 0.6vh, 6px);
+  padding: clamp(10px, 1.6vh, 14px) clamp(4px, 0.6vw, 6px);
+  border-radius: clamp(9px, 1.2vw, 12px);
+  border: clamp(2px, 0.3vw, 3px) solid rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-body);
+}
+
+.bank-choice-item.lumber {
+  background: linear-gradient(180deg, #5d4037, #3e2723);
+  border-color: #8d6e63;
+}
+
+.bank-choice-item.brick {
+  background: linear-gradient(180deg, #e64a19, #bf360c);
+  border-color: #ff7043;
+}
+
+.bank-choice-item.wool {
+  background: linear-gradient(180deg, #7cb342, #558b2f);
+  border-color: #aed581;
+}
+
+.bank-choice-item.grain {
+  background: linear-gradient(180deg, #f9a825, #f57f17);
+  border-color: #ffcc02;
+}
+
+.bank-choice-item.ore {
+  background: linear-gradient(180deg, #78909c, #546e7a);
+  border-color: #b0bec5;
+}
+
+.bank-choice-item .res-icon {
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1;
+}
+
+.bank-choice-item .bank-choice-ratio {
+  font-size: clamp(10px, 1.1vw, 12px);
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.bank-choice-item.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+.bank-choice-item.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(245, 197, 24, 0.4), 0 4px 14px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.bank-choice-item:not(.disabled):hover {
+  transform: translateY(-2px);
+}
+
+.res-stepper .res-icon {
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1;
+}
+
+.res-stepper-controls {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.6vw, 6px);
+}
+
+.res-stepper-btn {
+  width: clamp(18px, 2.2vw, 24px);
+  height: clamp(18px, 2.2vw, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.35);
+  color: white;
+  font-weight: 800;
+  font-size: clamp(12px, 1.4vw, 15px);
+  cursor: pointer;
+  transition: all 0.12s;
+  line-height: 1;
+  padding: 0;
+}
+
+.res-stepper-btn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.55);
+  transform: scale(1.1);
+}
+
+.res-stepper-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.res-stepper-value {
+  min-width: clamp(16px, 2vw, 20px);
+  text-align: center;
+  font-weight: 800;
+  color: white;
+  font-size: clamp(14px, 1.6vw, 17px);
+}
+
+.res-stepper-ratio {
+  font-size: clamp(9px, 1vw, 11px);
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}

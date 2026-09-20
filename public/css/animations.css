@@ -1,0 +1,110 @@
+/* ══════════════════════════════════════════════
+   animations.css — Keyframes globales
+   ══════════════════════════════════════════════ */
+
+@keyframes titleGlow {
+  from {
+    filter: drop-shadow(0 0 30px rgba(245, 197, 24, 0.3)) drop-shadow(4px 6px 0px rgba(0, 0, 0, 0.9));
+  }
+
+  to {
+    filter: drop-shadow(0 0 60px rgba(245, 197, 24, 0.7)) drop-shadow(4px 6px 0px rgba(0, 0, 0, 0.9));
+  }
+}
+
+@keyframes activePulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(245, 197, 24, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(245, 197, 24, 0.8);
+  }
+}
+
+@keyframes diceRoll {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  25% {
+    transform: rotateX(180deg) rotateY(90deg);
+  }
+
+  50% {
+    transform: rotateX(360deg) rotateY(180deg);
+  }
+
+  75% {
+    transform: rotateX(270deg) rotateY(360deg);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 10px rgba(245, 197, 24, 0.3);
+  }
+
+  to {
+    box-shadow: 0 0 24px rgba(245, 197, 24, 0.7);
+  }
+}
+
+@keyframes crownSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bubbleIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-100% + 20px)) scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1);
+  }
+}
+
+@keyframes bubbleOut {
+  to {
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 30px)) scale(0.6);
+  }
+}

@@ -1,0 +1,314 @@
+/* ══════════════════════════════════════════════
+   buttons.css — Todos los estilos de botones
+   ══════════════════════════════════════════════ */
+
+/* ── Botón principal (menú) ── */
+.btn-main {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 12px);
+  padding: clamp(12px, 2.5vh, 18px) clamp(30px, 6vw, 48px);
+  font-family: var(--font-title);
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 700;
+  color: #3a1800;
+  background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  border: clamp(2px, 0.3vw, 3px) solid var(--gold-deep);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.18s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.btn-main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
+  border-radius: inherit;
+}
+
+.btn-main:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(245, 197, 24, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-main:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  font-size: clamp(20px, 2.5vw, 24px);
+}
+
+/* ── Botón dorado (genérico) ── */
+.btn-gold {
+  padding: clamp(8px, 1.5vh, 12px) clamp(20px, 3vw, 28px);
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.8vw, 16px);
+  font-weight: 700;
+  color: #3a1800;
+  background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  border: clamp(1px, 0.2vw, 2px) solid var(--gold-deep);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.btn-gold:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-gold.btn-large {
+  padding: clamp(12px, 2vh, 16px) clamp(36px, 5vw, 48px);
+  font-size: clamp(16px, 2vw, 18px);
+}
+
+/* ── Botón secundario ── */
+.btn-secondary {
+  padding: clamp(8px, 1.5vh, 12px) clamp(16px, 3vw, 24px);
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1.5vw, 15px);
+  font-weight: 600;
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.08);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Botón atrás ── */
+.btn-back {
+  padding: clamp(6px, 1vh, 8px) clamp(10px, 2vw, 16px);
+  font-family: var(--font-body);
+  font-size: clamp(12px, 1.3vw, 14px);
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid rgba(245, 197, 24, 0.3);
+  border-radius: clamp(6px, 0.8vw, 8px);
+  cursor: pointer;
+  transition: all 0.15s;
+  z-index: 10;
+  position: relative;
+}
+
+.btn-back:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ── Botón copiar ── */
+.btn-copy {
+  padding: clamp(3px, 0.5vh, 4px) clamp(5px, 1vw, 8px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: clamp(4px, 0.6vw, 6px);
+  cursor: pointer;
+  font-size: clamp(14px, 1.5vw, 16px);
+  transition: all 0.15s;
+}
+
+.btn-copy:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Botón icono pequeño ── */
+.btn-icon-sm {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: clamp(16px, 2vw, 20px);
+  transition: transform 0.3s;
+}
+
+.btn-icon-sm:hover {
+  transform: rotate(180deg);
+}
+
+/* ── Botones de acción en juego ── */
+.btn-action {
+  padding: clamp(10px, 1.2vh, 18px) clamp(16px, 1.8vw, 28px);
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.3vw, 18px);
+  font-weight: 600;
+  border-radius: clamp(8px, 1vw, 10px);
+  border: clamp(1px, 0.2vw, 2px) solid;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.btn-action.primary {
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  color: #3a1800;
+  border-color: var(--gold-deep);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-action.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.btn-action.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cream);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-action.secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-action.danger {
+  background: rgba(180, 30, 0, 0.4);
+  color: #ffaaaa;
+  border-color: rgba(200, 50, 0, 0.5);
+}
+
+.btn-action.danger:hover {
+  background: rgba(180, 30, 0, 0.6);
+}
+
+.btn-action:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Botones de selección de recurso ── */
+.btn-res-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(4px, 0.8vh, 6px);
+  padding: clamp(10px, 1.8vh, 14px) clamp(12px, 2vw, 18px);
+  border-radius: clamp(8px, 1vw, 10px);
+  border: clamp(2px, 0.3vw, 3px) solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: white;
+  font-family: var(--font-body);
+  font-size: clamp(11px, 1.3vw, 13px);
+}
+
+.btn-res-choice:hover {
+  transform: translateY(-2px);
+}
+
+.btn-res-choice.selected {
+  border-color: var(--gold);
+}
+
+.btn-res-choice .res-icon-big {
+  font-size: clamp(20px, 2.5vw, 24px);
+}
+
+/* ── Botón de intercambio (modal canjear) ── */
+.btn-exchange {
+  padding: clamp(6px, 0.9vh, 9px) clamp(12px, 1.8vw, 18px);
+  font-family: var(--font-body);
+  font-size: clamp(11px, 1.25vw, 13px);
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+
+.btn-exchange.can-afford {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%, var(--gold-dark) 100%);
+  color: #2a1000;
+  border-color: var(--gold-deep);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-exchange.can-afford:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 0 12px rgba(245, 197, 24, 0.2);
+}
+
+.btn-exchange.cannot-afford {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.08);
+  cursor: not-allowed;
+}
+
+/* ── Botones de tipo de comercio ── */
+.btn-trade-type {
+  flex: 1;
+  padding: clamp(5px, 0.8vh, 8px);
+  font-family: var(--font-body);
+  font-size: clamp(12px, 1.3vw, 14px);
+  background: rgba(255, 255, 255, 0.05);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.15);
+  border-radius: clamp(6px, 0.8vw, 8px);
+  cursor: pointer;
+  color: var(--cream);
+  transition: all 0.15s;
+}
+
+.btn-trade-type.active {
+  background: rgba(245, 197, 24, 0.15);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── Botón de jugador objetivo ── */
+.btn-target-player {
+  padding: clamp(4px, 0.6vh, 6px) clamp(10px, 1.5vw, 14px);
+  border-radius: clamp(6px, 0.8vw, 8px);
+  border: clamp(1px, 0.2vw, 2px) solid;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: clamp(11px, 1.2vw, 13px);
+  transition: all 0.15s;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-target-player.selected {
+  opacity: 1;
+}
+
+.btn-target-player:not(.selected) {
+  opacity: 0.5;
+}
+
+/* ── Botón unirse a sala ── */
+.sala-item-join {
+  padding: clamp(6px, 1vh, 8px) clamp(14px, 2.5vw, 20px);
+  background: var(--gold);
+  color: #3a1800;
+  font-weight: 700;
+  font-size: clamp(12px, 1.5vw, 14px);
+  border: none;
+  border-radius: clamp(6px, 0.8vw, 8px);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.sala-item-join:hover {
+  background: var(--gold-light);
+}

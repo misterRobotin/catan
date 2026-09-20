@@ -1,0 +1,143 @@
+{
+  "_comment": "Configuración central del juego. Edita aquí para cambiar parámetros sin tocar el código.",
+  "room": {
+    "minPlayers": 3,
+    "maxPlayers": 4,
+    "codeLength": 6
+  },
+  "game": {
+    "victoryPoints": 10,
+    "robberThreshold": 7,
+    "discardThreshold": 7,
+    "longestRoadMin": 5,
+    "largestArmyMin": 3
+  },
+  "board": {
+    "hexSize": 95
+  },
+  "costs": {
+    "road": {
+      "lumber": 1,
+      "brick": 1
+    },
+    "settlement": {
+      "lumber": 1,
+      "brick": 1,
+      "wool": 1,
+      "grain": 1
+    },
+    "city": {
+      "grain": 2,
+      "ore": 3
+    },
+    "devcard": {
+      "wool": 1,
+      "grain": 1,
+      "ore": 1
+    }
+  },
+  "playerColors": [
+    "blue",
+    "yellow",
+    "green",
+    "purple"
+  ],
+  "colorMap": {
+    "blue": "#1e90ff",
+    "yellow": "#ffd700",
+    "green": "#32cd32",
+    "purple": "#9b30ff"
+  },
+  "resources": {
+    "lumber": {
+      "icon": "🪵",
+      "label": "Madera",
+      "cssClass": "lumber"
+    },
+    "brick": {
+      "icon": "🧱",
+      "label": "Arcilla",
+      "cssClass": "brick"
+    },
+    "wool": {
+      "icon": "🐑",
+      "label": "Lana",
+      "cssClass": "wool"
+    },
+    "grain": {
+      "icon": "🌾",
+      "label": "Trigo",
+      "cssClass": "grain"
+    },
+    "ore": {
+      "icon": "🪨",
+      "label": "Piedra",
+      "cssClass": "ore"
+    }
+  },
+  "devCards": {
+    "knight": {
+      "icon": "⚔️",
+      "name": "Caballero",
+      "desc": "Mueve el ladrón y roba un recurso",
+      "count": 14
+    },
+    "victory_point": {
+      "icon": "⭐",
+      "name": "Punto de Victoria",
+      "desc": "+1 punto (se revela al ganar)",
+      "count": 5
+    },
+    "road_building": {
+      "icon": "🛤️",
+      "name": "Construcción de Vías",
+      "desc": "Construye 2 carreteras gratis",
+      "count": 2
+    },
+    "year_of_plenty": {
+      "icon": "🌟",
+      "name": "Año de la Abundancia",
+      "desc": "Toma 2 recursos del banco",
+      "count": 2
+    },
+    "monopoly": {
+      "icon": "💰",
+      "name": "Monopolio",
+      "desc": "Todos te dan ese recurso",
+      "count": 2
+    }
+  },
+  "terrain": {
+    "forest": {
+      "resource": "lumber",
+      "count": 4
+    },
+    "hills": {
+      "resource": "brick",
+      "count": 3
+    },
+    "pasture": {
+      "resource": "wool",
+      "count": 4
+    },
+    "fields": {
+      "resource": "grain",
+      "count": 4
+    },
+    "mountain": {
+      "resource": "ore",
+      "count": 3
+    },
+    "desert": {
+      "resource": null,
+      "count": 1
+    }
+  },
+  "ui": {
+    "toastDuration": 3500,
+    "diceAnimDuration": 600,
+    "diceDisplayDuration": 2500,
+    "roomRefreshInterval": 5000,
+    "bubbleAppearDelay": 3500
+  }
+}

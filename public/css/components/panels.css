@@ -1,0 +1,493 @@
+/* ══════════════════════════════════════════════
+   panels.css — Paneles de jugador y recursos
+   ══════════════════════════════════════════════ */
+
+/* ── Panel base ── */
+.player-panel {
+  position: relative;
+  background: rgba(0, 0, 0, 0.72);
+  border: clamp(1px, 0.2vw, 2px) solid var(--gold-dark);
+  border-radius: clamp(7px, 1vw, 9px);
+  padding: clamp(4px, 0.6vw, 8px);
+  margin: clamp(3px, 0.5vw, 6px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2px, 0.4vh, 5px);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s;
+  z-index: 10;
+  overflow: hidden;
+  min-width: 0;
+  width: clamp(280px, 24vw, 420px);
+  max-width: clamp(280px, 24vw, 420px);
+  align-self: start;
+  box-sizing: border-box;
+}
+
+.player-panel.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Posiciones de esquina */
+.player-panel.corner.tl {
+  grid-area: tl;
+  justify-self: start;
+  align-self: start;
+  margin: clamp(6px, 1vh, 12px);
+}
+
+.player-panel.corner.tr {
+  grid-area: tr;
+  justify-self: end;
+  align-self: start;
+  margin: clamp(6px, 1vh, 12px);
+}
+
+.player-panel.corner.bl {
+  grid-area: bl;
+  align-self: end;
+  justify-self: start;
+  margin: clamp(6px, 1vh, 12px);
+}
+
+.player-panel.corner.br {
+  grid-area: br;
+  align-self: end;
+  justify-self: end;
+  margin: clamp(6px, 1vh, 12px);
+}
+
+/* Colores de borde por jugador */
+.player-panel[data-color="blue"] {
+  border-color: var(--c-blue);
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.3);
+}
+
+.player-panel[data-color="yellow"] {
+  border-color: var(--c-yellow);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.player-panel[data-color="green"] {
+  border-color: var(--c-green);
+  box-shadow: 0 0 20px rgba(50, 205, 50, 0.3);
+}
+
+.player-panel[data-color="purple"] {
+  border-color: var(--c-purple);
+  box-shadow: 0 0 20px rgba(155, 48, 255, 0.3);
+}
+
+.player-panel.active-turn {
+  animation: activePulse 1.5s ease-in-out infinite;
+}
+
+/* ── Contenido del panel ── */
+.panel-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(3px, 0.6vw, 8px);
+  font-family: var(--font-title);
+  font-size: clamp(26px, 3.5vh, 42px);
+  color: var(--gold);
+}
+
+.trophy {
+  font-size: clamp(22px, 3vh, 36px);
+}
+
+.score-hidden-hint {
+  font-size: clamp(20px, 2.8vh, 34px);
+  color: var(--gold);
+  opacity: 0.75;
+  cursor: help;
+  vertical-align: middle;
+  font-family: var(--font-title);
+  font-weight: 700;
+}
+
+.panel-name {
+  font-size: clamp(18px, 2.5vh, 28px);
+  font-weight: 800;
+  color: var(--cream);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.panel-player-name {
+  font-size: clamp(16px, 2.2vh, 24px);
+  font-weight: 700;
+  color: var(--cream);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 197, 24, 0.3), transparent);
+  flex-shrink: 0;
+  margin: 1px 0;
+}
+
+/* ── Stats ── */
+.panel-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(3px, 0.5vh, 6px);
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(3px, 0.5vh, 5px);
+  background: rgba(255, 255, 255, 0.09);
+  padding: clamp(6px, 1vh, 12px) clamp(1px, 0.3vw, 2px);
+  border-radius: clamp(4px, 0.5vw, 6px);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+  min-width: 0;
+  transition: all 0.2s;
+}
+
+.stat-item.stat-leader {
+  background: rgba(245, 197, 24, 0.22);
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(245, 197, 24, 0.25);
+}
+
+.stat-item.stat-leader .stat-val {
+  color: var(--gold);
+}
+
+.stat-icon {
+  font-size: clamp(16px, 2.2vh, 24px);
+  line-height: 1;
+}
+
+.stat-val {
+  font-weight: 800;
+  color: var(--cream);
+  font-size: clamp(15px, 2vh, 22px);
+  line-height: 1;
+}
+
+.stat-label {
+  display: none;
+  font-size: clamp(11px, 1.3vh, 15px);
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* ── Recursos ── */
+.panel-res-total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(3px, 0.6vw, 8px);
+  font-family: var(--font-title);
+  font-size: clamp(26px, 3.5vh, 42px);
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: clamp(2px, 0.4vh, 4px);
+}
+
+.panel-res-total .res-total-icon {
+  font-size: clamp(22px, 3vh, 36px);
+}
+
+.panel-res-total.over-limit {
+  color: #ff5252;
+}
+
+.panel-resources {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(3px, 0.5vh, 6px);
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.res-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(6px, 1vh, 12px) clamp(1px, 0.3vw, 2px);
+  border-radius: clamp(4px, 0.5vw, 6px);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.2);
+  cursor: default;
+  min-width: 0;
+  gap: clamp(2px, 0.4vh, 5px);
+}
+
+.res-card.lumber {
+  background: linear-gradient(180deg, #5d4037, #3e2723);
+  border-color: #8d6e63;
+}
+
+.res-card.brick {
+  background: linear-gradient(180deg, #e64a19, #bf360c);
+  border-color: #ff7043;
+}
+
+.res-card.wool {
+  background: linear-gradient(180deg, #7cb342, #558b2f);
+  border-color: #aed581;
+}
+
+.res-card.grain {
+  background: linear-gradient(180deg, #f9a825, #f57f17);
+  border-color: #ffcc02;
+}
+
+.res-card.ore {
+  background: linear-gradient(180deg, #78909c, #546e7a);
+  border-color: #b0bec5;
+}
+
+.res-icon {
+  font-size: clamp(18px, 2.5vh, 28px);
+  line-height: 1;
+}
+
+.res-count {
+  font-size: clamp(18px, 2.5vh, 28px);
+  font-weight: 800;
+  color: white;
+  line-height: 1;
+}
+
+.res-label {
+  display: none;
+  font-size: clamp(10px, 1.2vh, 14px);
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.res-count.res-hidden {
+  color: rgba(255, 255, 255, 0.55);
+  font-style: italic;
+}
+
+/* ── Cartas de desarrollo ── */
+.dev-cards-hidden {
+  display: none;
+}
+
+.dev-card-back {
+  width: clamp(18px, 2.5vw, 28px);
+  height: clamp(24px, 3.5vw, 38px);
+  background: linear-gradient(135deg, #b71c1c, #880e0e);
+  border: clamp(1px, 0.2vw, 2px) solid #e53935;
+  border-radius: clamp(4px, 0.5vw, 5px);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.panel-devcards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(4px, 0.5vw, 8px);
+}
+
+.dev-card-mini {
+  width: clamp(36px, 3.2vw, 54px);
+  height: clamp(50px, 4.5vw, 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: linear-gradient(180deg, #e8dfc8, #d8cbaa);
+  border: clamp(1px, 0.2vw, 2px) solid #6b1f1a;
+  border-radius: clamp(5px, 0.7vw, 7px);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.15s;
+  color: #3a1800;
+  gap: 0;
+  position: relative;
+}
+
+.dev-card-mini:hover {
+  transform: translateY(-2px);
+  border-color: #8a2e26;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dev-card-mini.played {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.dev-card-mini .card-icon {
+  font-size: clamp(14px, 1.4vw, 22px);
+  line-height: 1;
+}
+
+.dev-card-mini .card-name {
+  display: none;
+}
+
+.dev-card-mini:not(.played):not(.no-playable):hover::after {
+  content: 'Usar';
+  position: absolute;
+  bottom: clamp(-14px, -2vh, -18px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: #3a1800;
+  font-size: clamp(8px, 1vw, 10px);
+  font-weight: 700;
+  padding: clamp(1px, 0.3vh, 2px) clamp(4px, 0.6vw, 6px);
+  border-radius: clamp(3px, 0.4vw, 4px);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Cartas boca abajo de rivales */
+.panel-devcards-other {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(4px, 0.5vw, 8px);
+  justify-content: flex-start;
+}
+
+.dev-card-back-lg {
+  width: clamp(36px, 3.2vw, 54px);
+  height: clamp(50px, 4.5vw, 72px);
+  background: linear-gradient(160deg, #1a237e 0%, #0d1757 60%, #1a237e 100%);
+  border: clamp(1px, 0.2vw, 2px) solid #5c6bc0;
+  border-radius: clamp(5px, 0.7vw, 7px);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.dev-card-back-q {
+  font-size: clamp(14px, 1.4vw, 22px);
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: serif;
+  user-select: none;
+}
+
+/* ── Bocadillos de recursos ── */
+.resource-bubbles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+
+/* Cada bocadillo: píldora compacta flotando sobre el hex */
+.res-bubble {
+  position: absolute;
+  pointer-events: all;
+  cursor: pointer;
+  transform: translate(-50%, -100%);
+  animation: bubbleIn 0.38s cubic-bezier(0.34, 1.5, 0.64, 1) forwards;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.55));
+}
+
+/* La píldora en sí */
+.res-bubble-pill {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.7vw, 10px);
+  background:
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.10) 0%,
+      rgba(255, 255, 255, 0.04) 100%),
+    rgba(30, 8, 0, 0.92);
+  border: 1.5px solid rgba(245, 197, 24, 0.55);
+  border-radius: 100px;
+  padding: clamp(6px, 0.8vh, 9px) clamp(10px, 1.1vw, 16px);
+  backdrop-filter: blur(6px);
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.res-bubble-pill:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 6px 22px rgba(245, 197, 24, 0.28);
+  border-color: var(--gold);
+}
+
+/* Icono */
+.res-bubble-icon {
+  font-size: clamp(18px, 2vw, 26px);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Texto derecho: nombre + contador */
+.res-bubble-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.res-bubble-count {
+  font-family: var(--font-title);
+  font-size: clamp(14px, 1.6vw, 19px);
+  color: var(--gold-light);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.res-bubble-name {
+  font-size: clamp(8px, 0.85vw, 10px);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  line-height: 1;
+}
+
+/* Puntito indicador de "toca para recoger" */
+.res-bubble-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  animation: pulse 1s ease infinite alternate;
+  margin-left: 2px;
+}
+
+/* Colita apuntando al hex */
+.res-bubble-tail {
+  display: block;
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid rgba(245, 197, 24, 0.55);
+}
+
+.res-bubble.collecting {
+  animation: bubbleOut 0.24s ease forwards;
+}

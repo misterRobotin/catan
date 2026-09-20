@@ -1,0 +1,68 @@
+/* ══════════════════════════════════════════════
+   base.css — Reset, body y contenedores raíz
+   ══════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-body);
+  background: var(--bg-main);
+  color: var(--text-light);
+}
+
+/* ── Pantallas ── */
+.screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ── Fondo textural (menú y sala) ── */
+.menu-bg-texture {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(200, 40, 0, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(120, 15, 0, 0.5) 0%, transparent 60%),
+    repeating-linear-gradient(45deg,
+      transparent 0px, transparent 8px,
+      rgba(255, 255, 255, 0.015) 8px, rgba(255, 255, 255, 0.015) 9px),
+    #5c0a00;
+  z-index: 0;
+}
+
+.menu-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
+}
+
+.menu-content {
+  position: relative;
+  z-index: 50;
+  width: 100%;
+  max-width: min(900px, 85vw);
+  padding: clamp(20px, 4vh, 40px) clamp(12px, 2.5vw, 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+}

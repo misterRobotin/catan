@@ -1,0 +1,198 @@
+/* ══════════════════════════════════════════════
+   sala.css — Pantallas de sala (crear/unirse/espera)
+   ══════════════════════════════════════════════ */
+
+.sala-container {
+  position: relative;
+  z-index: 50;
+  width: 100%;
+  max-width: min(700px, 80vw);
+  padding: clamp(20px, 4vh, 40px) clamp(12px, 2.5vw, 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  gap: 0;
+}
+
+/* ── Cabecera de sala ── */
+.sala-header {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2vw, 16px);
+  width: 100%;
+  padding-bottom: clamp(12px, 2.5vh, 20px);
+  border-bottom: 1px solid rgba(245, 197, 24, 0.2);
+  margin-bottom: clamp(14px, 3vh, 24px);
+}
+
+.sala-title {
+  font-family: var(--font-title);
+  font-size: clamp(20px, 3.5vw, 28px);
+  color: var(--gold);
+  flex: 1;
+}
+
+.sala-id-wrap {
+  display: flex;
+  align-items: center;
+  gap: clamp(5px, 1vw, 8px);
+}
+
+.sala-id-label {
+  font-size: clamp(11px, 1.3vw, 13px);
+  color: var(--text-muted);
+}
+
+.sala-codigo {
+  font-family: monospace;
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 700;
+  color: var(--gold);
+  background: rgba(245, 197, 24, 0.1);
+  padding: clamp(3px, 0.5vh, 4px) clamp(8px, 1.5vw, 12px);
+  border-radius: clamp(4px, 0.6vw, 6px);
+  border: 1px solid rgba(245, 197, 24, 0.3);
+  letter-spacing: 0.2em;
+}
+
+/* ── Cuerpo y grid de jugadores ── */
+.sala-body {
+  width: 100%;
+  flex: 1;
+}
+
+.jugadores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 45vw), 1fr));
+  gap: clamp(8px, 1.5vw, 12px);
+  margin-bottom: clamp(12px, 2.5vh, 20px);
+}
+
+.jugador-card {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 14px);
+  padding: clamp(12px, 2vh, 16px) clamp(14px, 2.5vw, 20px);
+  background: rgba(255, 255, 255, 0.04);
+  border: clamp(1px, 0.2vw, 2px) solid;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+
+.jugador-avatar {
+  width: clamp(36px, 5vw, 44px);
+  height: clamp(36px, 5vw, 44px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 700;
+  border: clamp(2px, 0.3vw, 3px) solid currentColor;
+}
+
+.jugador-info {
+  flex: 1;
+}
+
+.jugador-name {
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.jugador-role {
+  font-size: clamp(10px, 1.2vw, 12px);
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.jugador-color-dot {
+  width: clamp(12px, 1.5vw, 14px);
+  height: clamp(12px, 1.5vw, 14px);
+  border-radius: 50%;
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.4);
+}
+
+/* ── Info y pie de sala ── */
+.sala-info {
+  text-align: center;
+  padding: clamp(12px, 2vh, 16px) 0;
+}
+
+.sala-hint {
+  color: var(--text-muted);
+  font-size: clamp(12px, 1.5vw, 14px);
+  margin-bottom: clamp(4px, 0.8vh, 6px);
+}
+
+.sala-minmax {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: clamp(11px, 1.3vw, 13px);
+}
+
+.sala-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: clamp(16px, 3vh, 24px);
+}
+
+/* ── Lista de salas disponibles ── */
+.salas-lista {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.5vw, 12px);
+  margin-bottom: clamp(16px, 3vh, 24px);
+}
+
+.sala-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(12px, 2vh, 16px) clamp(14px, 2.5vw, 20px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(245, 197, 24, 0.2);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sala-item:hover {
+  background: rgba(245, 197, 24, 0.08);
+  border-color: rgba(245, 197, 24, 0.5);
+}
+
+.sala-item-name {
+  font-size: clamp(14px, 2vw, 17px);
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.sala-item-info {
+  font-size: clamp(11px, 1.3vw, 13px);
+  color: var(--text-muted);
+  margin-top: clamp(3px, 0.6vh, 4px);
+}
+
+.sala-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: clamp(20px, 5vh, 40px);
+  font-size: clamp(13px, 1.5vw, 15px);
+}
+
+/* ── Unirse por código ── */
+.sala-codigo-join {
+  display: flex;
+  gap: clamp(8px, 1.5vw, 12px);
+  align-items: center;
+  padding-top: clamp(10px, 2vh, 16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sala-codigo-join .modal-input {
+  flex: 1;
+}

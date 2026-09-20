@@ -1,0 +1,52 @@
+/* ══════════════════════════════════════════════
+   menu.css — Pantalla de menú principal
+   ══════════════════════════════════════════════ */
+
+/* ── Título CATAN ── */
+.catan-title-wrap {
+  text-align: center;
+  margin-bottom: clamp(30px, 8vh, 60px);
+}
+
+.catan-title {
+  font-family: var(--font-title);
+  font-size: clamp(72px, 14vw, 160px);
+  font-weight: 900;
+  background: linear-gradient(180deg,
+      #fff8c8 0%,
+      #ffe060 20%,
+      #f5c518 45%,
+      #c49a10 70%,
+      #8b6914 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 0 40px rgba(245, 197, 24, 0.4)) drop-shadow(4px 6px 0px rgba(0, 0, 0, 0.9));
+  line-height: 1;
+  letter-spacing: 0.05em;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.title-underline {
+  width: 60%;
+  height: clamp(2px, 0.4vh, 3px);
+  margin: clamp(8px, 2vh, 12px) auto clamp(10px, 2.5vh, 16px);
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.catan-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--text-muted);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* ── Botones del menú ── */
+.menu-buttons {
+  display: flex;
+  gap: clamp(20px, 4vw, 32px);
+  flex-wrap: wrap;
+  justify-content: center;
+}

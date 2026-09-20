@@ -1,0 +1,223 @@
+/* ══════════════════════════════════════════════
+   chat-log.css — Chat y log de eventos
+   ══════════════════════════════════════════════ */
+
+/* ── Columna izquierda: agrupa log (arriba) + chat (debajo) ── */
+.left-side-stack {
+  position: fixed;
+  left: clamp(4px, 0.4vw, 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(280px, 24vw, 420px);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.6vh, 8px);
+}
+
+/* ── Log ── */
+.log-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 0;
+  flex: 1;
+}
+
+.log-panel.collapsed {
+  flex: 0 0 auto;
+}
+
+.log-toggle {
+  padding: clamp(8px, 1vh, 14px) clamp(14px, 1.5vw, 22px);
+  background: rgba(255, 255, 255, 0.08);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.2);
+  border-radius: clamp(8px, 1vw, 10px);
+  cursor: pointer;
+  font-size: clamp(13px, 1.3vw, 17px);
+  color: var(--text-muted);
+  text-align: center;
+  transition: background 0.15s, color 0.15s, border-radius 0.15s;
+  user-select: none;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.log-toggle:hover {
+  color: var(--gold);
+}
+
+.log-toggle.is-open {
+  border-radius: clamp(8px, 1vw, 10px) clamp(8px, 1vw, 10px) 0 0;
+  border-bottom-color: transparent;
+}
+
+.log-body {
+  background: rgba(255, 255, 255, 0.08);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-radius: 0 0 clamp(8px, 1vw, 10px) clamp(8px, 1vw, 10px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.log-body.hidden {
+  display: none;
+}
+
+#log-messages {
+  flex: 1;
+  min-height: clamp(90px, 11vh, 160px);
+  overflow-y: auto;
+  padding: clamp(8px, 1vh, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3px, 0.5vh, 4px);
+}
+
+#log-messages::-webkit-scrollbar {
+  width: clamp(3px, 0.4vw, 4px);
+}
+
+#log-messages::-webkit-scrollbar-thumb {
+  background: rgba(245, 197, 24, 0.3);
+  border-radius: clamp(1px, 0.3vw, 2px);
+}
+
+.log-entry {
+  font-size: clamp(12px, 1.1vw, 15px);
+  color: var(--text-muted);
+  padding: clamp(2px, 0.3vh, 5px) clamp(4px, 0.4vw, 8px);
+  border-radius: clamp(3px, 0.4vw, 4px);
+  animation: fadeIn 0.3s ease;
+}
+
+/* ── Chat (pegado debajo del log) ── */
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 0;
+  flex: 1;
+}
+
+.chat-panel.collapsed {
+  flex: 0 0 auto;
+}
+
+.chat-toggle {
+  padding: clamp(8px, 1vh, 14px) clamp(14px, 1.5vw, 22px);
+  background: rgba(255, 255, 255, 0.08);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.2);
+  border-radius: clamp(8px, 1vw, 10px);
+  cursor: pointer;
+  font-size: clamp(13px, 1.3vw, 17px);
+  color: var(--text-muted);
+  text-align: center;
+  transition: background 0.15s, color 0.15s, border-radius 0.15s;
+  user-select: none;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.chat-toggle:hover {
+  color: var(--gold);
+}
+
+.chat-toggle.is-open {
+  border-radius: clamp(8px, 1vw, 10px) clamp(8px, 1vw, 10px) 0 0;
+  border-bottom-color: transparent;
+}
+
+.chat-body {
+  background: rgba(255, 255, 255, 0.08);
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-radius: 0 0 clamp(8px, 1vw, 10px) clamp(8px, 1vw, 10px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.chat-body.hidden {
+  display: none;
+}
+
+.chat-messages {
+  flex: 1;
+  min-height: clamp(90px, 11vh, 160px);
+  overflow-y: auto;
+  padding: clamp(8px, 1vh, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.8vh, 6px);
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: clamp(3px, 0.4vw, 4px);
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(245, 197, 24, 0.3);
+  border-radius: clamp(1px, 0.3vw, 2px);
+}
+
+.chat-msg {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(13px, 1.2vw, 16px);
+}
+
+.chat-msg-name {
+  font-weight: 700;
+  font-size: clamp(11px, 1vw, 14px);
+  margin-bottom: clamp(1px, 0.3vh, 2px);
+}
+
+.chat-msg-text {
+  background: rgba(255, 255, 255, 0.05);
+  padding: clamp(5px, 0.6vh, 9px) clamp(8px, 0.9vw, 14px);
+  border-radius: clamp(6px, 0.8vw, 8px);
+  color: var(--cream);
+  word-break: break-word;
+}
+
+.chat-input-row {
+  display: flex;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+#chat-input {
+  flex: 1;
+  padding: clamp(8px, 1vh, 14px);
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1.2vw, 16px);
+  color: var(--cream);
+}
+
+#chat-send {
+  padding: clamp(8px, 1vh, 14px) clamp(12px, 1.2vw, 18px);
+  background: var(--gold);
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  color: #3a1800;
+  font-weight: 700;
+  font-size: clamp(15px, 1.4vw, 20px);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#chat-send:hover {
+  background: var(--gold-light);
+}

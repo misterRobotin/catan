@@ -1,0 +1,44 @@
+/* ══════════════════════════════════════════════
+   variables.css — Tokens de diseño globales
+   ══════════════════════════════════════════════ */
+
+:root {
+  /* ── Fondo ── */
+  --bg-dark: #3a0600;
+  --bg-main: #5c0a00;
+  --bg-medium: #7a1000;
+
+  /* ── Dorado ── */
+  --gold: #f5c518;
+  --gold-light: #ffe566;
+  --gold-dark: #c49a10;
+  --gold-deep: #8b6914;
+
+  /* ── Crema / texto ── */
+  --cream: #fff8dc;
+  --cream-dark: #f0e0a0;
+  --text-light: #fff8dc;
+  --text-muted: #d4a855;
+  --border-gold: #c49a10;
+
+  /* ── Colores de jugador ── */
+  --c-blue: #1e90ff;
+  --c-yellow: #ffd700;
+  --c-green: #32cd32;
+  --c-purple: #9b30ff;
+
+  /* ── Recursos ── */
+  --c-lumber: #5d4037;
+  --c-brick: #e64a19;
+  --c-wool: #7cb342;
+  --c-grain: #f9a825;
+  --c-ore: #78909c;
+
+  /* ── Tipografía ── */
+  --font-title: 'Cinzel Decorative', serif;
+  --font-body: 'Cinzel', serif;
+
+  /* ── Utilidades ── */
+  --radius: 12px;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
